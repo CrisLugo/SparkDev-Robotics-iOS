@@ -116,81 +116,93 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqA-bO-3LA" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Data goes here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ObH-3Y-DNE">
-                                                <rect key="frame" x="20" y="103" width="374" height="117"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="aQA-m6-Bjv" id="AoN-ge-dlU"/>
-                                                </connections>
-                                            </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3g-Ys-ZEo">
-                                                <rect key="frame" x="179" y="345" width="56" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Forward"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3g-Ys-ZEo">
+                                                <rect key="frame" x="182" y="434" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ArQ-fV-cQz"/>
+                                                    <constraint firstAttribute="width" constant="50" id="qfd-GS-cJm"/>
+                                                </constraints>
+                                                <state key="normal" image="arrow.up" catalog="system"/>
                                                 <connections>
                                                     <action selector="sendForwardDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="6pO-yC-a1t"/>
+                                                    <action selector="sendForwardUp:" destination="aQA-m6-Bjv" eventType="touchUpInside" id="Gpp-jv-PNl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT5-d4-Bf9">
-                                                <rect key="frame" x="190" y="495" width="34" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Back"/>
+                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IS-8G-nbe">
+                                                <rect key="frame" x="41" y="92" width="333" height="217"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="217" id="4HB-HX-qYn"/>
+                                                </constraints>
+                                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsInlineMediaPlayback="YES">
+                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                    <wkPreferences key="preferences"/>
+                                                </wkWebViewConfiguration>
+                                            </wkWebView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="353-ac-LMg">
+                                                <rect key="frame" x="275" y="490" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="qaQ-kD-Ku8"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vhG-8d-QvX"/>
+                                                </constraints>
+                                                <state key="normal" image="arrow.right" catalog="system"/>
                                                 <connections>
-                                                    <action selector="sendBackDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="LPt-ET-Qf9"/>
+                                                    <action selector="sendRightDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="z3h-gG-KoG"/>
+                                                    <action selector="sendRightUp:" destination="aQA-m6-Bjv" eventType="touchUpInside" id="8BC-9D-h9J"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMK-tK-IFj">
-                                                <rect key="frame" x="101" y="416" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Left"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMK-tK-IFj">
+                                                <rect key="frame" x="90" y="490" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="QqQ-Vm-rlB"/>
+                                                    <constraint firstAttribute="height" constant="50" id="bBy-sa-akT"/>
+                                                </constraints>
+                                                <state key="normal" image="arrow.left" catalog="system"/>
                                                 <connections>
                                                     <action selector="sendLeftDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="c8a-OQ-qaL"/>
+                                                    <action selector="sendLeftUp:" destination="aQA-m6-Bjv" eventType="touchUpInside" id="Gxo-fx-Jvx"/>
                                                 </connections>
                                             </button>
-                                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11z-Gh-ONF">
-                                                <rect key="frame" x="41" y="103" width="333" height="217"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsInlineMediaPlayback="YES">
-                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                    <wkPreferences key="preferences"/>
-                                                </wkWebViewConfiguration>
-                                            </wkWebView>
-                                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3IS-8G-nbe">
-                                                <rect key="frame" x="41" y="92" width="333" height="217"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsInlineMediaPlayback="YES">
-                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                    <wkPreferences key="preferences"/>
-                                                </wkWebViewConfiguration>
-                                            </wkWebView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.16927744289999999" green="0.16927744289999999" blue="0.16927744289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ObH-3Y-DNE" secondAttribute="trailing" constant="16" id="egt-Ki-JsK"/>
-                                            <constraint firstItem="ObH-3Y-DNE" firstAttribute="top" secondItem="oqA-bO-3LA" secondAttribute="top" constant="103" id="tNl-S3-yTz"/>
-                                            <constraint firstItem="ObH-3Y-DNE" firstAttribute="leading" secondItem="oqA-bO-3LA" secondAttribute="leading" constant="16" id="yBs-Cz-ppP"/>
+                                            <constraint firstAttribute="bottom" secondItem="U3g-Ys-ZEo" secondAttribute="bottom" constant="252" id="6Yr-xQ-i4W"/>
+                                            <constraint firstItem="353-ac-LMg" firstAttribute="leading" secondItem="ZMK-tK-IFj" secondAttribute="trailing" constant="95" id="7Vb-zb-nWD"/>
+                                            <constraint firstAttribute="bottom" secondItem="353-ac-LMg" secondAttribute="bottom" constant="196" id="Hyf-gs-rfa"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZMK-tK-IFj" secondAttribute="bottom" constant="196" id="VuI-2X-Pwl"/>
+                                            <constraint firstAttribute="trailing" secondItem="3IS-8G-nbe" secondAttribute="trailing" constant="40" id="cHI-mj-liH"/>
+                                            <constraint firstItem="3IS-8G-nbe" firstAttribute="top" secondItem="oqA-bO-3LA" secondAttribute="top" constant="92" id="ejB-wH-IMu"/>
+                                            <constraint firstItem="U3g-Ys-ZEo" firstAttribute="centerX" secondItem="oqA-bO-3LA" secondAttribute="centerX" id="fxf-wu-KW3"/>
+                                            <constraint firstItem="3IS-8G-nbe" firstAttribute="leading" secondItem="oqA-bO-3LA" secondAttribute="leading" constant="41" id="hkG-jH-nJK"/>
+                                            <constraint firstItem="ZMK-tK-IFj" firstAttribute="leading" secondItem="oqA-bO-3LA" secondAttribute="leading" constant="115" id="un5-UL-frc"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="353-ac-LMg">
-                                        <rect key="frame" x="283" y="416" width="36" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Right"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT5-d4-Bf9">
+                                        <rect key="frame" x="182" y="561" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="oqU-Qj-bJV"/>
+                                            <constraint firstAttribute="height" constant="50" id="zGq-iU-5ir"/>
+                                        </constraints>
+                                        <state key="normal" image="arrow.down" catalog="system"/>
                                         <connections>
-                                            <action selector="sendRightDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="z3h-gG-KoG"/>
+                                            <action selector="sendBackDown:" destination="aQA-m6-Bjv" eventType="touchDown" id="LPt-ET-Qf9"/>
+                                            <action selector="sendBackUp:" destination="aQA-m6-Bjv" eventType="touchUpInside" id="jTN-K5-mdi"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="oqA-bO-3LA" firstAttribute="top" secondItem="fEQ-Id-Qp8" secondAttribute="top" id="15S-em-WEL"/>
+                                    <constraint firstItem="gT5-d4-Bf9" firstAttribute="centerX" secondItem="fEQ-Id-Qp8" secondAttribute="centerX" id="1KW-Ko-pf4"/>
+                                    <constraint firstAttribute="bottom" secondItem="gT5-d4-Bf9" secondAttribute="bottom" constant="125" id="3fE-Lv-gSc"/>
+                                    <constraint firstAttribute="trailing" secondItem="gT5-d4-Bf9" secondAttribute="trailing" constant="182" id="4nO-BS-Oy3"/>
+                                    <constraint firstAttribute="bottom" secondItem="gT5-d4-Bf9" secondAttribute="bottom" constant="125" id="9i8-nZ-dGq"/>
                                     <constraint firstAttribute="trailing" secondItem="oqA-bO-3LA" secondAttribute="trailing" id="EmZ-C6-oGx"/>
                                     <constraint firstItem="oqA-bO-3LA" firstAttribute="centerY" secondItem="fEQ-Id-Qp8" secondAttribute="centerY" id="Jz0-cH-Sqe"/>
+                                    <constraint firstItem="gT5-d4-Bf9" firstAttribute="leading" secondItem="fEQ-Id-Qp8" secondAttribute="leading" constant="182" id="Tpj-Zo-Z1m"/>
                                     <constraint firstAttribute="bottom" secondItem="oqA-bO-3LA" secondAttribute="bottom" id="Vy4-v5-rdr"/>
                                     <constraint firstItem="oqA-bO-3LA" firstAttribute="centerX" secondItem="fEQ-Id-Qp8" secondAttribute="centerX" id="WKQ-Xc-wuc"/>
                                     <constraint firstItem="oqA-bO-3LA" firstAttribute="leading" secondItem="fEQ-Id-Qp8" secondAttribute="leading" id="alg-aU-zhN"/>
+                                    <constraint firstItem="gT5-d4-Bf9" firstAttribute="top" secondItem="fEQ-Id-Qp8" secondAttribute="top" constant="561" id="qFI-rT-1zk"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -207,7 +219,6 @@
                         <barButtonItem key="backBarButtonItem" title="Disconnect" id="bh9-F4-hZD"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="baseTextView" destination="ObH-3Y-DNE" id="pET-s0-crm"/>
                         <outlet property="scrollView" destination="fEQ-Id-Qp8" id="FsD-lV-H8p"/>
                         <outlet property="webVideoView" destination="3IS-8G-nbe" id="o41-hL-iYz"/>
                     </connections>
@@ -217,4 +228,10 @@
             <point key="canvasLocation" x="1098.5507246376812" y="-4.0178571428571423"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.down" catalog="system" width="60" height="64"/>
+        <image name="arrow.left" catalog="system" width="64" height="48"/>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="arrow.up" catalog="system" width="60" height="64"/>
+    </resources>
 </document>

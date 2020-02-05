@@ -17,7 +17,7 @@ import CoreBluetooth
 class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, UITextViewDelegate, UITextFieldDelegate, WKUIDelegate {
     
     //UI
-    @IBOutlet weak var baseTextView: UITextView!
+ //   @IBOutlet weak var baseTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -33,13 +33,13 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"Back", style:.plain, target:nil, action:nil)
-        self.baseTextView.delegate = self
+/*        self.baseTextView.delegate = self
         //self.inputTextField.delegate = self
         //Base text view setup
         self.baseTextView.layer.borderWidth = 3.0
         self.baseTextView.layer.borderColor = UIColor.blue.cgColor
         self.baseTextView.layer.cornerRadius = 3.0
-        self.baseTextView.text = ""
+        self.baseTextView.text = ""*/
         //Input Text Field setup
         /*self.inputTextField.layer.borderWidth = 2.0
         self.inputTextField.layer.borderColor = UIColor.blue.cgColor
@@ -47,7 +47,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         //Create and start the peripheral manager
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         //-Notification for updating the text view with incoming text
-        updateIncomingData()
+   //     updateIncomingData()
         
         let myURL = URL(string: "http://192.168.43.84:81/stream");
         let myRequest = URLRequest(url: myURL!);
@@ -55,7 +55,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.baseTextView.text = ""
+      //  self.baseTextView.text = ""
         
 
     }
@@ -69,7 +69,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
     }
     
 
-    func updateIncomingData () {
+/*    func updateIncomingData () {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Notify"), object: nil , queue: nil){
             notification in
             let appendString = "\n"
@@ -85,7 +85,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
             self.baseTextView.attributedText = self.consoleAsciiText
             
         }
-    }
+    }*/
     
  /*   @IBAction func clickSendAction(_ sender: AnyObject) {
         outgoingData()
@@ -108,9 +108,33 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         sendData(inputText: "d");
     }
     
+    func sendCancel() {
+        sendData(inputText: "e");
+    }
+    
+    @IBAction func sendForwardUp(_ sender: Any) {
+        sendCancel();
+    }
     
     
-    func outgoingData () {
+    @IBAction func sendRightUp(_ sender: Any) {
+        sendCancel();
+    }
+    
+    
+    @IBAction func sendBackUp(_ sender: Any) {
+        sendCancel();
+    }
+    
+    
+    @IBAction func sendLeftUp(_ sender: Any) {
+        sendCancel();
+    }
+    
+    
+    
+    
+/*    func outgoingData () {
         let appendString = "\n"
         
         let inputText = inputTextField.text
@@ -129,7 +153,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         //erase what's in the text field
         inputTextField.text = ""
         
-    }
+    }*/
     
     func sendData (inputText: String) {
         let appendString = "\n"
@@ -144,7 +168,7 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         newAsciiText.append(attribString)
 
         consoleAsciiText = newAsciiText
-        baseTextView.attributedText = consoleAsciiText
+//        baseTextView.attributedText = consoleAsciiText
         //erase what's in the text field
 
     }
@@ -169,14 +193,14 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
     
     
     //MARK: UITextViewDelegate methods
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+  /*  func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView === baseTextView {
             //tapping on consoleview dismisses keyboard
             inputTextField.resignFirstResponder()
             return false
         }
         return true
-    }
+    }*/
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scrollView.setContentOffset(CGPoint(x:0, y:250), animated: true)
@@ -217,11 +241,11 @@ class UartModuleViewController: UIViewController, CBPeripheralManagerDelegate, U
         self.view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+ /*   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         outgoingData()
         return(true)
-    }
+    }*/
     
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let error = error {
